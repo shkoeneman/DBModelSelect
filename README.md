@@ -23,11 +23,15 @@ This is a basic example which shows you how to use various features of the packa
 library(DBModelSelect)
 
 # generate some data
+set.seed(5122023)
 data <- data.frame(s = rnorm(200), t = rnorm(200))
 data$y <- data$s + rnorm(200)
 
 # perform all subsets regression
 model_list <- FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = TRUE)
+
+#determine whether largest candidate model shows lack of fit
+BootGOFTestLM(model_list[[length(model_list)]], data = data)
 
 # perform model selection
 model_select <- StandICModelSelect(model_list, IC = "AIC")
