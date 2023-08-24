@@ -80,7 +80,7 @@ StandICModelSelect <- function(model_list, IC = "AIC", ref_model_index = NULL, s
   best_model_index <- ((1:length(model_list))[meets_cutoff])[which(df_vec[meets_cutoff] == min(df_vec[meets_cutoff]))]
   best_model_index <- best_model_index[which.min(stand_IC[best_model_index])]
   
-  return(list(
+  out <- list(
     best_model_index = best_model_index,
     best_model = model_list[[best_model_index]],
     meets_cutoff = meets_cutoff,
@@ -90,6 +90,35 @@ StandICModelSelect <- function(model_list, IC = "AIC", ref_model_index = NULL, s
     stand_IC = stand_IC,
     df_diff = ref_df - df_vec,
     ref_model_index = ref_model_index
-  ))
+  )
   
+  class(out) <- "StandICModelSelect"
+  
+  return(out)
+  
+}
+
+#' @rdname StandICModelSelect
+#' @method print StandICModelSelect
+#' @export
+print.StandICModelSelect <- function(x, ...) {
+  cat(paste0('Model Selection using Standardized ', x$IC, '\n',
+      'Selected Model:'))
+  print(x$best_model)
+}
+
+
+#' @rdname StandICModelSelect
+#' @method plot StandICModelSelect
+#' @export
+plot.StandICModelSelect <- function(x, ...){
+  with(x, {
+    plot(df_diff, stand_IC, type = "p",
+         ylab = paste0("Standardized ",IC), xlab = paste0("Difference in DOF"))
+    abline(h = model_cutoff, col = "blue")
+    points(df_diff[stand_IC < model_cutoff], stand_IC[stand_IC < model_cutoff],
+           col = "green")
+    points(df_diff[stand_IC >= model_cutoff], stand_IC[stand_IC > model_cutoff],
+           col = "red")
+  })
 }

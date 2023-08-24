@@ -2,6 +2,8 @@
 % Please edit documentation in R/StandICModelSelect.R
 \name{StandICModelSelect}
 \alias{StandICModelSelect}
+\alias{print.StandICModelSelect}
+\alias{plot.StandICModelSelect}
 \title{Model selection using standardized information criteria}
 \usage{
 StandICModelSelect(
@@ -11,6 +13,10 @@ StandICModelSelect(
   sd_cutoff = 2,
   user_df = NULL
 )
+
+\method{print}{StandICModelSelect}(x, ...)
+
+\method{plot}{StandICModelSelect}(x, ...)
 }
 \arguments{
 \item{model_list}{A list containing the fitted model objects on which to perform model selection. Model objects must have a `logLik` method defined for them.}
