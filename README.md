@@ -27,12 +27,13 @@ data <- data.frame(s = rnorm(200), t = rnorm(200))
 data$y <- data$s + rnorm(200)
 
 # perform all subsets regression
-model_list <- DBModelSelect::FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = TRUE)
+model_list <- FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = TRUE)
 
 # perform model selection
-model_select <- DBModelSelect::StandICModelSelect(model_list, IC = "AIC")
+model_select <- StandICModelSelect(model_list, IC = "AIC")
 
-# plot results of model selection
-DBModelSelect::StandICPlot(model_select)
+# print and plot results of model selection
+print(model_select)
+plot(model_select)
 ```
 
