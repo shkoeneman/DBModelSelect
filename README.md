@@ -28,7 +28,7 @@ data <- data.frame(s = rnorm(200), t = rnorm(200))
 data$y <- data$s + rnorm(200)
 
 # perform all subsets regression
-model_list <- FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = TRUE)
+model_list <- FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = FALSE)
 
 #determine whether largest candidate model shows lack of fit
 BootGOFTestLM(model_list[[length(model_list)]], data = data)
