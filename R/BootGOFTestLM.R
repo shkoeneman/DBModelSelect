@@ -16,7 +16,7 @@ BootGOFTestLM <- function(model, data, boot_iter = 1000, level = 0.95, return_di
   }
   
   boot_dist <- sapply(1:boot_iter, FUN = function(x){
-    boot_data <- model_data[sample(1:nrow(model_data), nrow(model_data), TRUE),]
+    boot_data <- data[sample(1:nrow(data), nrow(data), TRUE),]
     return(SandwichEstGOF(lm(formula(model), data = boot_data)))
   })
   boot_int <- unname(quantile(boot_dist, c((1-level)/2,(1-(1-level)/2))))
