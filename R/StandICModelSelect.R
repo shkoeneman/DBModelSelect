@@ -39,7 +39,7 @@ StandICModelSelect <- function(model_list, IC = "AIC", ref_model_index = NULL, s
   }
   IC_vec <- sapply(model_list, FUN = function(x){return(eval(parse(text = paste0(IC,"(x)"))))})
   
-  ref_model_index <- ifelse(is.null(ref_model_index),which.min(df_vec),ref_model_index)
+  ref_model_index <- ifelse(is.null(ref_model_index),which.max(df_vec),ref_model_index)
   tryCatch({invisible(logLik(model_list[[ref_model_index]]))},
            error = function(cond){message("Reference model object does not have logLik method.
                                           Please submit a valid model object.")}
