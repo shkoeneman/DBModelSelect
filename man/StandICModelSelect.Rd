@@ -23,7 +23,7 @@ StandICModelSelect(
 
 \item{IC}{A character string containing the base information criteria to use. Options are `AIC`, `BIC`, and `AICc` for linear models. Default option is `AIC`.}
 
-\item{ref_model_index}{An integer with the index of the largest candidate model to use as the reference. If not supplied, defaults to the last model in `model_list`.}
+\item{ref_model_index}{An integer with the index of the largest candidate model to use as the reference. If not supplied, defaults to the model with largest number of estimated coefficients in `model_list`.}
 
 \item{sd_cutoff}{A numeric describing how many standard deviations to use when formulating a cutoff for model viability.}
 

@@ -5,7 +5,7 @@
 #' 
 #' @param model_list A list containing the fitted model objects on which to perform model selection. Model objects must have a `logLik` method defined for them.
 #' @param IC A character string containing the base information criteria to use. Options are `AIC`, `BIC`, and `AICc` for linear models. Default option is `AIC`.
-#' @param ref_model_index An integer with the index of the largest candidate model to use as the reference. If not supplied, defaults to the last model in `model_list`.
+#' @param ref_model_index An integer with the index of the largest candidate model to use as the reference. If not supplied, defaults to the model with largest number of estimated coefficients in `model_list`.
 #' @param sd_cutoff A numeric describing how many standard deviations to use when formulating a cutoff for model viability.
 #' @param user_df An optional vector the same length as `model_list` where one can specify the degrees of freedom of each fitted model. If not supplied, the degrees of freedom for each model is calculated to be the number of estimated regression coefficients.
 #' 
@@ -31,21 +31,23 @@ StandICModelSelect <- function(model_list, IC = "AIC", ref_model_index = NULL, s
   if(class(model_list) != "list" | length(model_list) == 0){
     stop("Supplied model list is empty or not a list. Please supply a valid model list.")
   }
-  ref_model_index <- ifelse(is.null(ref_model_index),length(model_list),ref_model_index)
-  tryCatch({invisible(logLik(model_list[[ref_model_index]]))},
-           error = function(cond){message("Reference model object does not have logLik method.
-                                          Please submit a valid model object.")}
-           )
+
   if(!is.null(user_df)){
     df_vec <- user_df 
   } else{
     df_vec <- sapply(model_list, FUN = function(x){return(length(coef(x)))})
   }
   IC_vec <- sapply(model_list, FUN = function(x){return(eval(parse(text = paste0(IC,"(x)"))))})
-  n <- nobs(model_list[[ref_model_index]])
+  
+  ref_model_index <- ifelse(is.null(ref_model_index),which.min(df_vec),ref_model_index)
+  tryCatch({invisible(logLik(model_list[[ref_model_index]]))},
+           error = function(cond){message("Reference model object does not have logLik method.
+                                          Please submit a valid model object.")}
+  )
   
   ref_IC <- eval(parse(text = paste0(IC,"(model_list[[",ref_model_index,"]])")))
   ref_df <- length(coef(model_list[[ref_model_index]]))
+  n <- nobs(model_list[[ref_model_index]])
   
   if(sum(df_vec >= ref_df) > 1){
     stop("Reference model is not the largest candidate model. Please specify the sole largest candidate model.")
