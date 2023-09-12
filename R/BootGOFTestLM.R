@@ -3,11 +3,12 @@
 #' @description
 #' Performs a bootstrap goodness-of-fit procedure to assess the fit of a normal linear regression model
 #' 
-#' @param model A fitted `lm` object.
-#' @param data A dataframe used to fit `model`.
+#' @param x A fitted \code{lm} object.
+#' @param data A dataframe used to fit the model given by \code{x}.
 #' @param boot_iter An integer indicating number of bootstrap iterations to perform.
 #' @param level Confidence level of the bootstrap interval used in the test.
 #' @param return_dist A logical specifying whether to optionally return the bootstrap distribution. Defaults to FALSE.
+#' @param ... Additional arguments.
 #' @return A list containing the specification and results of the test.
 #' 
 #' @examples
@@ -21,19 +22,19 @@
 #' BootGOFTestLM(model_list[[length(model_list)]], data = data)
 #' 
 #' @export
-BootGOFTestLM <- function(model, data, boot_iter = 1000, level = 0.95, return_dist = FALSE){
-  if(!inherits(model,"lm")){
+BootGOFTestLM <- function(x, data, boot_iter = 1000, level = 0.95, return_dist = FALSE, ...){
+  if(!inherits(x,"lm")){
     stop("Model supplied is not a linear model. A model of class lm must be supplied.")
   }
   
-  boot_dist <- sapply(1:boot_iter, FUN = function(x){
+  boot_dist <- sapply(1:boot_iter, FUN = function(t){
     boot_data <- data[sample(1:nrow(data), nrow(data), TRUE),]
-    return(SandwichEstGOF(lm(formula(model), data = boot_data)))
+    return(SandwichEstGOF(lm(formula(x), data = boot_data)))
   })
   boot_int <- unname(quantile(boot_dist, c((1-level)/2,(1-(1-level)/2))))
   
   out <- list(
-    null_val = 2*nobs(model),
+    null_val = 2*nobs(x),
     level = level,
     boot_iter = boot_iter,
     boot_int = boot_int
@@ -58,12 +59,12 @@ print.BootGOFTestLM <- function(x, ...) {
 }
 
 
-SandwichEstGOF <- function(model){
-  n <- nobs(model)
-  y <- matrix(model.response(model.frame(model)), nrow = n, ncol = 1)
-  X <- model.matrix(model)
+SandwichEstGOF <- function(x){
+  n <- nobs(x)
+  y <- matrix(model.response(model.frame(x)), nrow = n, ncol = 1)
+  X <- model.matrix(x)
   p <- ncol(X)
-  B <- matrix(coef(model), nrow = p, ncol = 1)
+  B <- matrix(coef(x), nrow = p, ncol = 1)
   
   
   sighat2 <- as.numeric(t(y-(X%*%B)) %*% (y-(X%*%B))*(1/n))

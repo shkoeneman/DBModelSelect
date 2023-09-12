@@ -1,14 +1,14 @@
 #' Perform all subsets regression for generalized linear models
 #' 
 #' @description
-#' Fit a specified generalized linear model on all subsets of covariates supplied. Produces an output suitable for use with the `StandICModelSelect` function.
+#' Fit a specified generalized linear model on all subsets of covariates supplied. Produces an output suitable for use with the \code{StandICModelSelect} function.
 #' 
 #' @param response A character string specifying the name of the response variable.
 #' @param data A dataframe containing a column corresponding to the response variable in addition to columns for each covariate of interest.
-#' @param family A family suitable for supplying to the `glm` function specifying the error distribution and link function.
+#' @param family A family suitable for supplying to the \code{glm} function specifying the error distribution and link function.
 #' @param intercept A logical indicating whether an intercept term should be considered in models. Defaults to TRUE.
 #' @param force_intercept A logical indicating whether to force an intercept term into all models if an intercept is desired. Defaults to TRUE.
-#' @param ... Additional arguments that may be supplied when calling `glm` to fit the models of interest.
+#' @param ... Additional arguments that may be supplied when calling \code{glm} to fit the models of interest.
 #' 
 #' @return A list of fitted linear models suitable for use with the `StandICModelSelect` function.
 #' 

@@ -5,20 +5,29 @@
 \alias{print.BootGOFTestLM}
 \title{Bootstrap goodness-of-fit procedure for linear models}
 \usage{
-BootGOFTestLM(model, data, boot_iter = 1000, level = 0.95, return_dist = FALSE)
+BootGOFTestLM(
+  x,
+  data,
+  boot_iter = 1000,
+  level = 0.95,
+  return_dist = FALSE,
+  ...
+)
 
 \method{print}{BootGOFTestLM}(x, ...)
 }
 \arguments{
-\item{model}{A fitted `lm` object.}
+\item{x}{A fitted \code{lm} object.}
 
-\item{data}{A dataframe used to fit `model`.}
+\item{data}{A dataframe used to fit the model given by \code{x}.}
 
 \item{boot_iter}{An integer indicating number of bootstrap iterations to perform.}
 
 \item{level}{Confidence level of the bootstrap interval used in the test.}
 
 \item{return_dist}{A logical specifying whether to optionally return the bootstrap distribution. Defaults to FALSE.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 A list containing the specification and results of the test.

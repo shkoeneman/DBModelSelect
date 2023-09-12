@@ -7,11 +7,12 @@
 \title{Model selection using standardized information criteria}
 \usage{
 StandICModelSelect(
-  model_list,
+  x,
   IC = "AIC",
   ref_model_index = NULL,
   sd_cutoff = 2,
-  user_df = NULL
+  user_df = NULL,
+  ...
 )
 
 \method{print}{StandICModelSelect}(x, ...)
@@ -19,15 +20,17 @@ StandICModelSelect(
 \method{plot}{StandICModelSelect}(x, ...)
 }
 \arguments{
-\item{model_list}{A list containing the fitted model objects on which to perform model selection. Model objects must have a `logLik` method defined for them.}
+\item{x}{A list containing the fitted model objects on which to perform model selection. Model objects must have a \code{logLik} method defined for them.}
 
-\item{IC}{A character string containing the base information criteria to use. Options are `AIC`, `BIC`, and `AICc` for linear models. Default option is `AIC`.}
+\item{IC}{A character string containing the base information criteria to use. Options are "AIC", "BIC", and "AICc" for linear models. Default option is `AIC`.}
 
-\item{ref_model_index}{An integer with the index of the largest candidate model to use as the reference. If not supplied, defaults to the model with largest number of estimated coefficients in `model_list`.}
+\item{ref_model_index}{An integer with the index of the largest candidate model to use as the reference. If not supplied, defaults to the model with largest number of estimated coefficients in \code{x}.}
 
 \item{sd_cutoff}{A numeric describing how many standard deviations to use when formulating a cutoff for model viability.}
 
-\item{user_df}{An optional vector the same length as `model_list` where one can specify the degrees of freedom of each fitted model. If not supplied, the degrees of freedom for each model is calculated to be the number of estimated regression coefficients.}
+\item{user_df}{An optional vector the same length as \code{x} where one can specify the degrees of freedom of each fitted model. If not supplied, the degrees of freedom for each model is calculated to be the number of estimated regression coefficients.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 A list containing the final model selected in addition to standardized information criteria and difference in degrees of freedom for all candidate models.

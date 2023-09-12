@@ -13,21 +13,20 @@
 The DESCRIPTION file:
 \packageDESCRIPTION{DBModelSelect}
 \packageIndices{DBModelSelect}
-~~ An overview of how to use the package, including the most important functions ~~
+The \code{DBModelSelect package} provides several methods of
+model selection based in distributional theory. This includes
+an implementation of selection using standardized information
+criteria in the \code{StandICModelSelect} function, and
+the implementation of an omnibus goodness-of-fit test for
+linear models in the \code{BootGOFTestLM} function.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/shkoeneman/DBModelSelect}
+}
 }
 \author{
-\packageAuthor{DBModelSelect}
-
-Maintainer: \packageMaintainer{DBModelSelect}
-}
-\references{
-~~ Literature or other references for background information ~~
-}
-\keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
+\strong{Maintainer}: Scott H. Koeneman \email{Scott.Koeneman@jefferson.edu} 
 
 }
