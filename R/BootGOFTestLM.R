@@ -18,7 +18,7 @@
 #' data$y <- data$s + rnorm(200)
 #' # determine whether candidate model shows lack of fit
 #' model <- lm(y~s+t, data = data)
-#' BootGOFTestLM(model, data = data)
+#' BootGOFTestLM(model, data = data, bott_iter = 100)
 #' 
 #' @export
 BootGOFTestLM <- function(x, data, boot_iter = 1000, level = 0.95, return_dist = FALSE, ...){
