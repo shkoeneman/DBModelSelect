@@ -21,7 +21,7 @@
 #' model_select <- StandICModelSelect(model_list, IC = "AIC")
 #' @export
 FitLMSubsets <- function(response, data, intercept = TRUE, force_intercept = TRUE){
-  if(class(response) != "character" || sum(names(data) == response) < 1){
+  if(!inherits(response, "character") || sum(names(data) == response) < 1){
     stop("Please supply a proper response argument, that being a character string containing the name of a column in the data.")
   }
   covar_names <- names(data)[! names(data) %in% response]

@@ -18,12 +18,13 @@
 #' data <- data.frame(s = rnorm(200), t = rnorm(200))
 #' data$y <- data$s + rnorm(200)
 #' # perform all subsets regression
-#' model_list <- FitGLMSubsets(response = "y", data = data, family = gaussian(), intercept = TRUE, force_intercept = TRUE)
+#' model_list <- FitGLMSubsets(response = "y", data = data, family = gaussian(),
+#'   intercept = TRUE, force_intercept = TRUE)
 #' # perform model selection
 #' model_select <- StandICModelSelect(model_list, IC = "AIC")
 #' @export
 FitGLMSubsets <- function(response, data, family, intercept = TRUE, force_intercept = TRUE, ...){
-  if(class(response) != "character" || sum(names(data) == response) < 1){
+  if(!inherits(response, "character") || sum(names(data) == response) < 1){
     stop("Please supply a proper response argument, that being a character string containing the name of a column in the data.")
   }
   covar_names <- names(data)[! names(data) %in% response]

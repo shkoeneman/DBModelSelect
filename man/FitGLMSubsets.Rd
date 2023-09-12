@@ -30,7 +30,7 @@ FitGLMSubsets(
 A list of fitted linear models suitable for use with the `StandICModelSelect` function.
 }
 \description{
-Perform linear regression on all subsets of covariates supplied. Produces an output suitable for use with the `StandICModelSelect` function.
+Fit a specified generalized linear model on all subsets of covariates supplied. Produces an output suitable for use with the `StandICModelSelect` function.
 }
 \examples{
 # example code
@@ -38,7 +38,8 @@ Perform linear regression on all subsets of covariates supplied. Produces an out
 data <- data.frame(s = rnorm(200), t = rnorm(200))
 data$y <- data$s + rnorm(200)
 # perform all subsets regression
-model_list <- FitGLMSubsets(response = "y", data = data, family = gaussian(), intercept = TRUE, force_intercept = TRUE)
+model_list <- FitGLMSubsets(response = "y", data = data, family = gaussian(),
+  intercept = TRUE, force_intercept = TRUE)
 # perform model selection
 model_select <- StandICModelSelect(model_list, IC = "AIC")
 }

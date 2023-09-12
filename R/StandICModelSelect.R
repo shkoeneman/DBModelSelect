@@ -28,7 +28,7 @@ StandICModelSelect <- function(model_list, IC = "AIC", ref_model_index = NULL, s
   if(!(IC[1] %in% c("AIC", "BIC", "AICc"))){
     stop("Selected IC is not a valid option. Please select a valid IC.")
   }
-  if(class(model_list) != "list" | length(model_list) == 0){
+  if(!inherits(model_list,"list") | length(model_list) == 0){
     stop("Supplied model list is empty or not a list. Please supply a valid model list.")
   }
 
@@ -77,7 +77,7 @@ StandICModelSelect <- function(model_list, IC = "AIC", ref_model_index = NULL, s
   cutoff <- switch(IC,
             AIC = 0 + sd_cutoff,
             BIC = sqrt(1/2)*(1-log(n)) + sd_cutoff,
-            AICc = max_cutoff + sd_cutoff)
+            AICc = max_expect + sd_cutoff)
   meets_cutoff <- (stand_IC < cutoff)
   best_model_index <- ((1:length(model_list))[meets_cutoff])[which(df_vec[meets_cutoff] == min(df_vec[meets_cutoff]))]
   best_model_index <- best_model_index[which.min(stand_IC[best_model_index])]

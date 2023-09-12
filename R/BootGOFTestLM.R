@@ -9,9 +9,20 @@
 #' @param level Confidence level of the bootstrap interval used in the test.
 #' @param return_dist A logical specifying whether to optionally return the bootstrap distribution. Defaults to FALSE.
 #' @return A list containing the specification and results of the test.
+#' 
+#' @examples
+#' # generate some data
+#' set.seed(5122023)
+#' data <- data.frame(s = rnorm(200), t = rnorm(200))
+#' data$y <- data$s + rnorm(200)
+#' # perform all subsets regression
+#' model_list <- FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = FALSE)
+#' # determine whether largest candidate model shows lack of fit
+#' BootGOFTestLM(model_list[[length(model_list)]], data = data)
+#' 
 #' @export
 BootGOFTestLM <- function(model, data, boot_iter = 1000, level = 0.95, return_dist = FALSE){
-  if(class(model) != "lm"){
+  if(!inherits(model,"lm")){
     stop("Model supplied is not a linear model. A model of class lm must be supplied.")
   }
   

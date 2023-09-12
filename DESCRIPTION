@@ -1,10 +1,10 @@
 Package: DBModelSelect
 Type: Package
-Title: Package for performing model selection with standardized information criteria
+Title: Distribution-Based Model Selection
 Version: 0.1.0.9001
 Date: 2023-08-22
 Author: Scott Koeneman
 Maintainer: Scott Koeneman <Scott.Koeneman@jefferson.edu>
-Description: Package for performing model selection with standardized information criteria
+Description: Perform model selection using distribution and probability-based methods, including standardized AIC, BIC, and AICc.
 License: GPL (>= 3)
 RoxygenNote: 7.2.3
