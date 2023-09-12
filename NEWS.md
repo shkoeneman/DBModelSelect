@@ -1,3 +1,3 @@
-# DBModelSelect (development version)
+# DBModelSelect 0.1.1
 
 * Initial CRAN submission.
