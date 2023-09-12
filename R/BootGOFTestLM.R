@@ -16,10 +16,9 @@
 #' set.seed(5122023)
 #' data <- data.frame(s = rnorm(200), t = rnorm(200))
 #' data$y <- data$s + rnorm(200)
-#' # perform all subsets regression
-#' model_list <- FitLMSubsets(response = "y", data = data, intercept = TRUE, force_intercept = FALSE)
-#' # determine whether largest candidate model shows lack of fit
-#' BootGOFTestLM(model_list[[length(model_list)]], data = data)
+#' # determine whether candidate model shows lack of fit
+#' model <- lm(y~s+t, data = data)
+#' BootGOFTestLM(model, data = data)
 #' 
 #' @export
 BootGOFTestLM <- function(x, data, boot_iter = 1000, level = 0.95, return_dist = FALSE, ...){
