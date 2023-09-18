@@ -10,6 +10,7 @@ FitGLMSubsets(
   family,
   intercept = TRUE,
   force_intercept = TRUE,
+  cluster = NULL,
   ...
 )
 }
@@ -24,13 +25,15 @@ FitGLMSubsets(
 
 \item{force_intercept}{A logical indicating whether to force an intercept term into all models if an intercept is desired. Defaults to TRUE.}
 
+\item{cluster}{A cluster created using \code{parallel::makeCluster}.}
+
 \item{...}{Additional arguments that may be supplied when calling \code{glm} to fit the models of interest.}
 }
 \value{
-A list of fitted linear models suitable for use with the `StandICModelSelect` function.
+A list of fitted models suitable for use with the \code{StandICModelSelect} function.
 }
 \description{
-Fit a specified generalized linear model on all subsets of covariates supplied. Produces an output suitable for use with the \code{StandICModelSelect} function.
+Fit a specified generalized linear model on all subsets of covariates supplied. May be done in parallel if a cluster is supplied. Produces an output suitable for use with the \code{StandICModelSelect} function.
 }
 \examples{
 # example code

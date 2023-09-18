@@ -4,7 +4,13 @@
 \alias{FitLMSubsets}
 \title{Perform all subsets linear regression}
 \usage{
-FitLMSubsets(response, data, intercept = TRUE, force_intercept = TRUE)
+FitLMSubsets(
+  response,
+  data,
+  intercept = TRUE,
+  force_intercept = TRUE,
+  cluster = NULL
+)
 }
 \arguments{
 \item{response}{A character string specifying the name of the response variable.}
@@ -14,12 +20,14 @@ FitLMSubsets(response, data, intercept = TRUE, force_intercept = TRUE)
 \item{intercept}{A logical indicating whether an intercept term should be considered in models. Defaults to TRUE.}
 
 \item{force_intercept}{A logical indicating whether to force an intercept term into all models if an intercept is desired. Defaults to TRUE.}
+
+\item{cluster}{A cluster created using \code{parallel::makeCluster}.}
 }
 \value{
-A list of fitted linear models suitable for use with the `StandICModelSelect` function.
+A list of fitted linear models suitable for use with the \code{StandICModelSelect} function.
 }
 \description{
-Perform linear regression on all subsets of covariates supplied. Produces an output suitable for use with the `StandICModelSelect` function.
+Perform linear regression on all subsets of covariates supplied. May be done in parallel if a cluster is supplied. Produces an output suitable for use with the \code{StandICModelSelect} function.
 }
 \examples{
 # example code

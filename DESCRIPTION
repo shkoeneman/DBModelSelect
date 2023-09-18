@@ -6,7 +6,15 @@ Date: 2023-08-22
 Authors@R: person("Scott H.", "Koeneman", 
                   email = "Scott.Koeneman@jefferson.edu", 
                   role = c("aut", "cre"))
-Description: Perform model selection using distribution and probability-based methods, including standardized AIC, BIC, and AICc.
+Description: Perform model selection using distribution and probability-based methods,
+	including standardized AIC, BIC, and AICc. These standardized information criteria
+	allow one to perform model selection in a way similar to the prevalent "Rule of 2"
+	method, but formalize the method to rely on probability theory. A novel goodness-of-fit
+	procedure for assessing linear regression models is also available. This test relies on
+	theoretical properties of the estimated error variance for a normal linear regression
+	model, and employs a bootstrap procedure to assess the null hypothesis that the fitted
+	model shows no lack of fit. Functionality to perform all subsets linear or generalized
+	linear regression are also available.
 URL: 
     https://github.com/shkoeneman/DBModelSelect
 License: GPL-3 + file LICENSE

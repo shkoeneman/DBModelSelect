@@ -9,7 +9,7 @@
 #' @param level Confidence level of the bootstrap interval used in the test.
 #' @param return_dist A logical specifying whether to optionally return the bootstrap distribution. Defaults to FALSE.
 #' @param ... Additional arguments.
-#' @return A list containing the specification and results of the test.
+#' @return A list containing the specification and results of the test. The hypothesis of adequate fit is rejected if the null value is not contained in the bootstrap interval.
 #' 
 #' @examples
 #' # generate some data

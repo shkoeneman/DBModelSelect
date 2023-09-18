@@ -30,7 +30,7 @@ BootGOFTestLM(
 \item{...}{Additional arguments.}
 }
 \value{
-A list containing the specification and results of the test.
+A list containing the specification and results of the test. The hypothesis of adequate fit is rejected if the null value is not contained in the bootstrap interval.
 }
 \description{
 Performs a bootstrap goodness-of-fit procedure to assess the fit of a normal linear regression model
@@ -42,6 +42,6 @@ data <- data.frame(s = rnorm(200), t = rnorm(200))
 data$y <- data$s + rnorm(200)
 # determine whether candidate model shows lack of fit
 model <- lm(y~s+t, data = data)
-BootGOFTestLM(model, data = data, bott_iter = 100)
+BootGOFTestLM(model, data = data, booot_iter = 100)
 
 }
