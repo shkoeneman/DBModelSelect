@@ -1,7 +1,7 @@
 Package: DBModelSelect
 Type: Package
 Title: Distribution-Based Model Selection
-Version: 0.2.0
+Version: 0.2.0.9000
 Date: 2023-08-22
 Authors@R: person("Scott H.", "Koeneman", 
                   email = "Scott.Koeneman@jefferson.edu", 
