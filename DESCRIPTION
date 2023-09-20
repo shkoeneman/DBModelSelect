@@ -14,8 +14,8 @@ Description: Perform model selection using distribution and probability-based me
 	theoretical properties of the estimated error variance for a normal linear regression
 	model, and employs a bootstrap procedure to assess the null hypothesis that the fitted
 	model shows no lack of fit. For more information, see Koeneman and Cavanaugh (2023)
-	<arXiv: >. Functionality to perform all subsets linear or generalized linear regression
-	is also available.
+	<arXiv:2309.10614>. Functionality to perform all subsets linear or generalized linear
+	regression is also available.
 URL: 
     https://github.com/shkoeneman/DBModelSelect
 License: GPL-3
