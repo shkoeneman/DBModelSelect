@@ -3,6 +3,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/shkoeneman/DBModelSelect/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/shkoeneman/DBModelSelect/actions/workflows/R-CMD-check.yaml)
+[![CRAN status](https://www.r-pkg.org/badges/version/DBModelSelect)](https://CRAN.R-project.org/package=DBModelSelect)
 <!-- badges: end -->
 
 The goal of DBModelSelect is to provide a package for using various distribution-based model selection techniques.
