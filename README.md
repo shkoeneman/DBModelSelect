@@ -9,7 +9,13 @@ The goal of DBModelSelect is to provide a package for using various distribution
 
 ## Installation
 
-You can install the development version of DBModelSelect from [GitHub](https://github.com/) with:
+You can install the latest CRAN version of DBModelSelect with:
+
+```r
+install.packages("DBModelSelect")
+```
+
+Or you can install the development version of DBModelSelect from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
