@@ -57,7 +57,7 @@ StandICModelSelect <- function(x, IC = "AIC", ref_model_index = NULL, sd_cutoff 
   if(IC == "AICc"){
     max_expect <- max(sqrt((ref_df-df_vec)/2) + 
                         ((2*(df_vec))*(n/(n-df_vec-1)) - 
-                           2*ref_df*(n/(n-ref_df-1)))/sqrt(2*(ref_df-df_vec)) )
+                           2*ref_df*(n/(n-ref_df-1)))/sqrt(2*(ref_df-df_vec)), na.rm = TRUE )
   }
   
   stand_IC <- sapply(1:length(x), FUN = function(t){

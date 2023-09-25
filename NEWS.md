@@ -1,4 +1,4 @@
-# DBModelSelect (development version)
+# DBModelSelect 0.2.1
 
 # DBModelSelect 0.2.0
 

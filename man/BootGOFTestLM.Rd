@@ -42,6 +42,6 @@ data <- data.frame(s = rnorm(200), t = rnorm(200))
 data$y <- data$s + rnorm(200)
 # determine whether candidate model shows lack of fit
 model <- lm(y~s+t, data = data)
-BootGOFTestLM(model, data = data, booot_iter = 100)
+BootGOFTestLM(model, data = data, boot_iter = 100)
 
 }
