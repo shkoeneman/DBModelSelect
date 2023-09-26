@@ -79,7 +79,7 @@ StandICModelSelect <- function(x, IC = "AIC", ref_model_index = NULL, sd_cutoff 
             AIC = 0 + sd_cutoff,
             BIC = sqrt(1/2)*(1-log(n)) + sd_cutoff,
             AICc = max_expect + sd_cutoff)
-  meets_cutoff <- (stand_IC < cutoff)
+  meets_cutoff <- (stand_IC <= cutoff)
   best_model_index <- ((1:length(x))[meets_cutoff])[which(df_vec[meets_cutoff] == min(df_vec[meets_cutoff]))]
   best_model_index <- best_model_index[which.min(stand_IC[best_model_index])]
   
