@@ -76,7 +76,7 @@ StandICModelSelect <- function(x, IC = "AIC", ref_model_index = NULL, sd_cutoff 
     }
   })
   cutoff <- switch(IC,
-            AIC = 0 + sd_cutoff,
+            AIC = -sqrt(1/2) + sd_cutoff,
             BIC = sqrt(1/2)*(1-log(n)) + sd_cutoff,
             AICc = max_expect + sd_cutoff)
   meets_cutoff <- (stand_IC <= cutoff)
